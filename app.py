@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/lewds')
 def lewds():
-	os.chdir('G:\\ADs music, video, picture\\Github\\lewds\\static\\lewds')
+	os.chdir('G:\\ADs music, video, picture\\Github\\other\\Lewds\\static\\lewds')
 	lewd_images = []
 	for i in os.listdir():
 		lewd_images.append('static/lewds/'+i)
