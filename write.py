@@ -1,16 +1,17 @@
 import requests
 import os
 import json
+import confidential
 
 html = requests.get("http://127.0.0.1:5000/lewds").text
-f = open('index.html','w')
+f = open('index.html','a')
 f.write(html)
 print("index.html file updated!")
 f.close()
 
 
 main_dir = os.getcwd()
-os.chdir('G:\\ADs music, video, picture\\Github\\other\\Lewds\\static\\lewds')
+os.chdir(confidential.IMG_FOLDER_PATH)
 files = os.listdir()
 links = []
 for filename in files:
@@ -22,3 +23,10 @@ with open('links.json','w') as f:
 	json.dump(links,f)
 
 print("links.json updated!")
+
+
+f = open("exsist.txt",'w')
+for file in files:
+	f.write(file+'\n')
+
+print("exsist.txt updated!")
