@@ -55,6 +55,10 @@
 		var imgDataURL = await fetch("https://rauls963.github.io/Lewds/links.json");
 		var imgLinks = await imgDataURL.json();
 		//console.log(imgLinks);
+		if(start >= imgLinks.length){
+			alert("no more images left!");
+			return;
+		}
 		for (let i = start + 1; i <= end; i++) {
 			imageView(imgLinks[i]);
 		}
@@ -84,6 +88,7 @@
 
 	window.addEventListener("load",loadImageLinks(-1,30));
 	window.addEventListener("resize", resizeAllGridItems);
+	window.addEventListener("scroll",resizeAllGridItems);
 </script>
 
 </html>
