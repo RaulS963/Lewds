@@ -35,6 +35,8 @@
 </body>
 <script>
 	var counter = 30;
+	var imgLinks;
+	var fetched = false;
 
 	function resizeGridItem(item) {
 		grid = document.getElementsByClassName("main-grid")[0];
@@ -52,8 +54,11 @@
 	}
 
 	async function loadImageLinks(start, end) {
-		var imgDataURL = await fetch("https://rauls963.github.io/Lewds/links.json");
-		var imgLinks = await imgDataURL.json();
+		if(fetched === false){
+			var imgDataURL = await fetch("https://rauls963.github.io/Lewds/links.json");
+			imgLinks = await imgDataURL.json();
+			fetched = true;
+		}
 		//console.log(imgLinks);
 		if(start >= imgLinks.length){
 			alert("no more images left!");
