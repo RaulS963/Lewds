@@ -38,6 +38,19 @@
 	var imgLinks;
 	var fetched = false;
 
+	function randomize(arr) {
+		let trails = arr.length;
+		let half_len = Math.floor(trails / 2);
+		for (let i = 0; i < half_len; i++) {
+			index_1 = Math.floor((Math.random() * half_len));
+			index_2 = Math.floor(Math.floor(Math.random() * (trails - half_len - 1) + half_len));
+			let temp = arr[index_1];
+			arr[index_1] = arr[index_2];
+			arr[index_2] = temp;
+		}
+		return arr;
+	}
+
 	function resizeGridItem(item) {
 		grid = document.getElementsByClassName("main-grid")[0];
 		rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
@@ -64,6 +77,7 @@
 			alert("no more images left!");
 			return;
 		}
+		imgLinks = randomize(imgLinks);
 		for (let i = start + 1; i <= end; i++) {
 			imageView(imgLinks[i]);
 		}
